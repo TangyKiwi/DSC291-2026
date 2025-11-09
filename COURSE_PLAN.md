@@ -8,7 +8,6 @@ A project-based introduction to modern, scalable data analytics. Students use AW
 * Basic linear algebra: vectors, norms, orthogonality, orthonormal bases, change of basis
 
 ## Project-based Course Plan: Scalable Data Analysis with Dask
-
 - **Format**: 10 weeks; 3 × 45‑minute lectures; one 30‑minute Zoom meeting weekly (alternating TA/Instructor)
 - **Teams**: 8 students/team; each team selects a public dataset (weather dataset reserved for instructor demos only)
 - **Grading**: 80% project, 20% homework (4 HWs × 5% each)
@@ -28,7 +27,7 @@ A project-based introduction to modern, scalable data analytics. Students use AW
 ## Weekly Schedule, Labs, and Deliverables
 
 ### Week 1 — Kickoff, AWS/S3, Vacoreum, Team Formation
-- Lecture: Course scope, evaluation, example questions; AWS accounts, IAM basics, S3 organization; dataset selection criteria (prefer ≥10 GB, public, stable access)
+- Lecture: Course scope, evaluation, example questions; AWS accounts, IAM basics, S3 organization; dataset selection criteria (prefer ≥3 GBnot more than 6GB, public, stable access)
 - Deliverables:
   - Project Proposal (1–2 pages): dataset, access plan, initial questions, risks
   - Repo initialized with `environment.yml`, `README`, roles, and tagging policy

@@ -1,0 +1,99 @@
+\documentclass{beamer}
+
+\usetheme{metropolis}
+\usepackage{amsmath, amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc, decorations.pathreplacing}
+
+\title{Principal Component Analysis and Reconstruction}
+\author{Prepared for dask-CSE255}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Intuition}
+  \begin{itemize}
+    \item High-dimensional data often lie near a low-dimensional subspace.
+    \item PCA finds orthogonal directions that maximize variance.
+    \item Reconstruction uses a subset of these components to approximate the original data.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Notation}
+  \begin{itemize}
+    \item Data matrix: $\mathbf{X} \in \mathbb{R}^{n \times d}$ centered (zero mean per feature).
+    \item Covariance matrix: $\mathbf{\Sigma} = \frac{1}{n-1} \mathbf{X}^\top \mathbf{X}$.
+    \item Eigen-decomposition: $\mathbf{\Sigma} = \mathbf{U} \mathbf{\Lambda} \mathbf{U}^\top$,
+          with $\mathbf{U} = [\mathbf{u}_1, \dots, \mathbf{u}_d]$ orthonormal.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Variance Maximization}
+  \[
+    \mathbf{u}_1 = \arg\max_{\|\mathbf{u}\| = 1} \mathbf{u}^\top \mathbf{\Sigma} \mathbf{u}
+  \]
+  \[
+    \mathbf{u}_k = \arg\max_{\|\mathbf{u}\| = 1, \mathbf{u} \perp \{\mathbf{u}_1,\ldots,\mathbf{u}_{k-1}\}} \mathbf{u}^\top \mathbf{\Sigma} \mathbf{u}
+  \]
+  \begin{itemize}
+    \item Each eigenvector captures decreasing variance $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_d$.
+    \item Project data: $\mathbf{Z} = \mathbf{X} \mathbf{U}$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Projection Diagram}
+  \centering
+  \begin{tikzpicture}[scale=1.1]
+    \draw[->] (-0.2, 0) -- (4, 0) node[right] {$u_1$};
+    \draw[->] (0, -0.2) -- (0, 3) node[above] {$u_2$};
+    \draw[->] (0, 0) -- (2.6, 2.0) node[above right] {$x$};
+    \draw[dashed] (2.6, 2.0) -- (2.6, 0) node[below right] {$z_1$};
+    \shade[ball color=blue!30, opacity=0.4] (2.6, 2.0) circle (0.08);
+    \shade[ball color=red!40, opacity=0.6] (2.6, 0) circle (0.08);
+    \draw [decorate, decoration={brace, amplitude=6pt}] (2.6,0) -- (2.6,2.0) node [midway, xshift=0.45cm] {$\mathbf{r}$};
+  \end{tikzpicture}
+  \begin{itemize}
+    \item $x$ projects onto principal axis $u_1$ yielding coordinate $z_1 = x^\top u_1$.
+    \item Residual $\mathbf{r}$ captures information lost in projection.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{k-Dimensional Subspace}
+  \begin{itemize}
+    \item Keep top $k$ eigenvectors: $\mathbf{U}_k = [\mathbf{u}_1,\dots,\mathbf{u}_k]$.
+    \item Low-dimensional representation: $\mathbf{Z}_k = \mathbf{X} \mathbf{U}_k$.
+    \item Reconstruction: $\widehat{\mathbf{X}} = \mathbf{Z}_k \mathbf{U}_k^\top$.
+  \end{itemize}
+  \[
+    \widehat{\mathbf{x}}_i = \sum_{j=1}^k z_{ij} \mathbf{u}_j
+  \]
+\end{frame}
+
+\begin{frame}{Reconstruction Error}
+  \[
+    E_k = \|\mathbf{X} - \widehat{\mathbf{X}}\|_F^2 = \sum_{j=k+1}^d \lambda_j
+  \]
+  \begin{itemize}
+    \item Error equals sum of discarded eigenvalues.
+    \item Explained variance ratio (EVR):
+      \[
+        \text{EVR}(k) = \frac{\sum_{j=1}^k \lambda_j}{\sum_{j=1}^d \lambda_j}
+      \]
+    \item Choose $k$ to balance compression and fidelity.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Summary}
+  \begin{itemize}
+    \item PCA rotates data into variance-ranked axes.
+    \item Reconstruction uses leading components to approximate original data.
+    \item Evaluate trade-off via explained variance and residual error.
+  \end{itemize}
+\end{frame}
+
+\end{document}
+

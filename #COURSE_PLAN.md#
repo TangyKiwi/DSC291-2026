@@ -44,10 +44,10 @@ Efficiency issues: lazyness, compute, persist, computation graph, partitioning
 ### Week 5 — PCA I: Theory
 - **Class 13 (Mon)**: Linear algebra
 - **Class 14 (Wed)**: Application to TAVG
-- **Class 15 (Fri)**: Visualization on map
 - **Deliverables / Notes**: _TBD_
 
 ### Week 6 — PCA II: Coefficients as Descriptors
+- **Class 15 (Fri)**: Visualization on map
 - **Class 16 (Mon)**: _Pending definition_
 - **Class 17 (Wed)**: _Pending definition_
 - **Class 18 (Fri)**: _Pending definition_

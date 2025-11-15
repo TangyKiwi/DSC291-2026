@@ -1,6 +1,6 @@
-\documentclass{beamer}
-
-\usetheme{metropolis}
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
 \usepackage{amsmath, amsfonts}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta, calc, decorations.pathreplacing}
@@ -40,7 +40,7 @@
     \mathbf{u}_k = \arg\max_{\|\mathbf{u}\| = 1, \mathbf{u} \perp \{\mathbf{u}_1,\ldots,\mathbf{u}_{k-1}\}} \mathbf{u}^\top \mathbf{\Sigma} \mathbf{u}
   \]
   \begin{itemize}
-    \item Each eigenvector captures decreasing variance $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_d$.
+    \item Each eigenvector captures decreasing variance $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_d$.
     \item Project data: $\mathbf{Z} = \mathbf{X} \mathbf{U}$.
   \end{itemize}
 \end{frame}

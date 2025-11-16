@@ -1,0 +1,25 @@
+\frametitle{Expectiles for Varying Variance}
+\begin{lstlisting}
+from pygam import ExpectileGAM
+from pygam.datasets import mcycle
+
+X, y = mcycle(return_X_y=True)
+
+# Fit mean model
+gam50 = ExpectileGAM(expectile=0.5)
+gam50.gridsearch(X, y)
+lam = gam50.lam
+
+# Fit other expectiles
+gam95 = ExpectileGAM(expectile=0.95, lam=lam).fit(X, y)
+gam75 = ExpectileGAM(expectile=0.75, lam=lam).fit(X, y)
+gam25 = ExpectileGAM(expectile=0.25, lam=lam).fit(X, y)
+gam05 = ExpectileGAM(expectile=0.05, lam=lam).fit(X, y)
+
+# Plot
+XX = gam50.generate_X_grid(term=0, n=500)
+plt.scatter(X, y, c="k", alpha=0.2)
+plt.plot(XX, gam95.predict(XX), label="0.95")
+plt.plot(XX, gam50.predict(XX), label="0.50")
+plt.plot(XX, gam05.predict(XX), label="0.05")
+\end{lstlisting}

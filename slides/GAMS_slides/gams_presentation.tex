@@ -1,0 +1,562 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{amsmath, amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc, decorations.pathreplacing}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Code listing setup
+\lstset{
+    basicstyle=\ttfamily\tiny,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!10},
+    language=Python,
+    showstringspaces=false,
+    aboveskip=2pt,
+    belowskip=2pt
+}
+
+\title{Generalized Additive Models (GAMs)}
+\subtitle{Introduction and Applications with pyGAM}
+\author{CSE255 - Scalable Data Analysis}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{What are GAMs?}
+\begin{block}{Generalized Additive Models}
+GAMs extend linear models by allowing non-linear functions of features while maintaining additivity:
+
+\[
+g(E[y|X]) = \beta_0 + f_1(X_1) + f_2(X_2) + \ldots + f_M(X_N)
+\]
+
+where $g()$ is the link function and $f_i()$ are smooth functions.
+\end{block}
+
+\begin{itemize}
+    \item \textbf{Additive}: Each feature contributes independently
+    \item \textbf{Flexible}: Can model non-linear relationships
+    \item \textbf{Interpretable}: Can visualize each $f_i(X_i)$ separately
+    \item \textbf{Regularized}: Smoothing penalties prevent overfitting
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why GAMs?}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Linear Models}
+\begin{itemize}
+    \item Simple and fast
+    \item Limited flexibility
+    \item Assumes linear relationships
+\end{itemize}
+
+\textbf{Neural Networks}
+\begin{itemize}
+    \item Very flexible
+    \item Hard to interpret
+    \item Black box models
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{GAMs}
+\begin{itemize}
+    \item Balance flexibility and interpretability
+    \item Automatic feature engineering
+    \item Partial dependence plots
+    \item Statistical inference
+    \item Control overfitting
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{GAM Components}
+A GAM has three main components:
+
+\begin{enumerate}
+    \item \textbf{Distribution}: From exponential family
+    \begin{itemize}
+        \item Normal, Binomial, Poisson, Gamma, Inverse Gaussian
+    \end{itemize}
+    
+    \item \textbf{Link Function}: Connects mean to linear predictor
+    \begin{itemize}
+        \item Identity, Logit, Log, Inverse
+    \end{itemize}
+    
+    \item \textbf{Functional Form}: Additive structure
+    \begin{itemize}
+        \item $l()$ linear terms
+        \item $s()$ spline terms
+        \item $f()$ factor terms
+        \item $te()$ tensor products
+    \end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Quick Start: Installing pyGAM}
+\begin{lstlisting}
+# Install via pip
+pip install pygam
+
+# Or via conda
+conda install -c conda-forge pygam
+
+# Also need pandas and matplotlib
+pip install pandas matplotlib
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Example 1: Simple Regression}
+\begin{lstlisting}
+from pygam import LinearGAM, s, f
+from pygam.datasets import wage
+
+# Load data
+X, y = wage()
+
+# Fit model with splines on first 2 features
+# and factor on 3rd feature
+gam = LinearGAM(s(0) + s(1) + f(2)).fit(X, y)
+
+# View summary
+gam.summary()
+\end{lstlisting}
+
+\begin{itemize}
+    \item $s(0)$: Spline on feature 0 (20 basis functions by default)
+    \item $s(1)$: Spline on feature 1
+    \item $f(2)$: Factor term on feature 2
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Model Summary Output}
+\begin{block}{Key Statistics}
+\begin{itemize}
+    \item \textbf{Effective DoF}: Reduced from 45 to ~25 by smoothing penalty
+    \item \textbf{GCV}: Generalized Cross-Validation score
+    \item \textbf{AIC}: Akaike Information Criterion
+    \item \textbf{Pseudo R-Squared}: Model fit quality
+\end{itemize}
+\end{block}
+
+\begin{block}{Term Information}
+\begin{itemize}
+    \item Lambda: Smoothing parameter for each term
+    \item Rank: Number of basis functions
+    \item EDoF: Effective degrees of freedom
+    \item P-value: Statistical significance
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Tuning Smoothing Parameters}
+\begin{lstlisting}
+import numpy as np
+
+# Grid search over lambda values
+lam = np.logspace(-3, 5, 5)
+lams = [lam] * 3
+
+gam.gridsearch(X, y, lam=lams)
+gam.summary()
+\end{lstlisting}
+
+\begin{block}{Randomized Search}
+\begin{lstlisting}
+lams = np.random.rand(100, 3) * 6 - 3
+lams = 10**lams
+gam.gridsearch(X, y, lam=lams)
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Partial Dependence Plots}
+\begin{lstlisting}
+import matplotlib.pyplot as plt
+
+for i, term in enumerate(gam.terms):
+    if term.isintercept:
+        continue
+    XX = gam.generate_X_grid(term=i)
+    pdep, confi = gam.partial_dependence(
+        term=i, X=XX, width=0.95)
+    plt.plot(XX[:, term.feature], pdep)
+    plt.plot(XX[:, term.feature], confi, 
+             c="r", ls="--")
+\end{lstlisting}
+
+\begin{block}{Interpretation}
+Shows effect of each feature on response, marginalizing over other features.
+\end{block}
+\end{frame}
+
+\begin{frame}{Example: Wage Data}
+\begin{block}{Model}
+\[
+\text{wage} = \beta_0 + f_1(\text{year}) + f_2(\text{age}) + f_3(\text{education})
+\]
+\end{block}
+
+\begin{itemize}
+    \item $f_1$: Non-linear trend over years
+    \item $f_2$: Age effect (often non-linear)
+    \item $f_3$: Education level (categorical)
+\end{itemize}
+
+\begin{block}{Benefits}
+\begin{itemize}
+    \item Can see if wage increases are linear or accelerating
+    \item Age effect may peak in middle age
+    \item Education categories handled naturally
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Example 2: Motorcycle Accident Data}
+\begin{lstlisting}
+from pygam import LinearGAM
+from pygam.datasets import mcycle
+
+X, y = mcycle(return_X_y=True)
+gam = LinearGAM(n_splines=25)
+gam.gridsearch(X, y)
+
+XX = gam.generate_X_grid(term=0, n=500)
+plt.plot(XX, gam.predict(XX), "r--")
+plt.plot(XX, gam.prediction_intervals(
+    XX, width=0.95), color="b", ls="--")
+plt.scatter(X, y, facecolor="gray", edgecolors="none")
+\end{lstlisting}
+
+\begin{itemize}
+    \item Time series of acceleration measurements
+    \item Shows uncertainty in predictions
+    \item Smooths noisy data
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Classification with LogisticGAM}
+\begin{lstlisting}
+from pygam import LogisticGAM, f, s
+from pygam.datasets import default
+
+X, y = default(return_X_y=True)
+gam = LogisticGAM(f(0) + s(1) + s(2))
+gam.gridsearch(X, y)
+
+# Plot partial dependence
+for i, ax in enumerate(axs):
+    XX = gam.generate_X_grid(term=i)
+    pdep, confi = gam.partial_dependence(
+        term=i, width=0.95)
+    ax.plot(XX[:, i], pdep)
+    ax.plot(XX[:, i], confi, c="r", ls="--")
+
+gam.accuracy(X, y)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Logistic GAM Model}
+\begin{block}{Formulation}
+\[
+\log\left(\frac{P(y=1|X)}{P(y=0|X)}\right) = \beta_0 + f_1(X_1) + f_2(X_2) + f_3(X_3)
+\]
+\end{block}
+
+\begin{itemize}
+    \item Models log-odds of default
+    \item $f(0)$: Factor for student status
+    \item $s(1)$: Spline for balance (non-linear effect)
+    \item $s(2)$: Spline for income
+\end{itemize}
+
+\begin{block}{Output}
+\begin{itemize}
+    \item Uses UBRE (Un-Biased Risk Estimator) for grid search
+    \item Scale is known (Binomial distribution)
+    \item Can compute accuracy, ROC curves, etc.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Poisson GAM for Count Data}
+\begin{lstlisting}
+from pygam import PoissonGAM
+from pygam.datasets import faithful
+
+X, y = faithful(return_X_y=True)
+gam = PoissonGAM()
+gam.gridsearch(X, y)
+
+plt.hist(faithful(return_X_y=False)["eruptions"], 
+         bins=200, color="k")
+plt.plot(X, gam.predict(X), color="r")
+\end{lstlisting}
+
+\begin{block}{Applications}
+Event counts, histogram smoothing, rate modeling, accident rates
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Coal Mining Disasters Example}
+\begin{lstlisting}
+from pygam import PoissonGAM
+from pygam.datasets import coal
+
+X, y = coal(return_X_y=True)
+
+# Create time bins for density
+time_bins = np.linspace(X.min(), X.max(), 50)
+bin_counts = np.zeros(len(time_bins)-1)
+bin_centers = np.zeros(len(time_bins)-1)
+
+for i in range(len(time_bins)-1):
+    mask = (X.flatten() >= time_bins[i]) & 
+           (X.flatten() < time_bins[i+1])
+    bin_counts[i] = np.sum(mask)
+    bin_centers[i] = (time_bins[i] + time_bins[i+1]) / 2
+
+# Fit Poisson GAM
+X_density = bin_centers[non_zero_mask].reshape(-1, 1)
+y_density = bin_counts[non_zero_mask]
+gam_poisson = PoissonGAM(s(0))
+gam_poisson.fit(X_density, y_density)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Poisson vs Linear GAM}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Poisson GAM}
+\begin{itemize}
+    \item Event rates
+    \item Log link
+    \item Count data
+\end{itemize}
+
+\textbf{Linear GAM}
+\begin{itemize}
+    \item Continuous values
+    \item Normal distribution
+    \item Can be negative
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Comparison (coal data)}
+\begin{itemize}
+    \item Poisson: Deviance 26.37, AIC 180.32
+    \item Linear: Deviance 33.35, AIC 215.96
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Interactions with Tensor Products}
+\begin{lstlisting}
+from pygam import PoissonGAM, s, te
+from pygam.datasets import chicago
+
+X, y = chicago(return_X_y=True)
+gam = PoissonGAM(s(0, n_splines=200) + 
+                 te(3, 1) + s(2))
+gam.fit(X, y)
+
+# Plot 3D surface
+XX = gam.generate_X_grid(term=1, meshgrid=True)
+Z = gam.partial_dependence(term=1, X=XX, 
+                           meshgrid=True)
+ax = plt.axes(projection="3d")
+ax.plot_surface(XX[0], XX[1], Z, cmap="viridis")
+\end{lstlisting}
+
+\begin{block}{Tensor Products}
+$te(3, 1)$ models interaction between features 3 and 1, allowing non-linear interactions.
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Constraints: Monotonic and Concave}
+\begin{lstlisting}
+from pygam import LinearGAM, s
+from pygam.datasets import hepatitis
+
+X, y = hepatitis(return_X_y=True)
+
+# Monotonic increasing
+gam1 = LinearGAM(s(0, constraints="monotonic_inc"))
+gam1.fit(X, y)
+
+# Concave
+gam2 = LinearGAM(s(0, constraints="concave"))
+gam2.fit(X, y)
+
+# Plot
+plt.plot(X, y, label="data")
+plt.plot(X, gam1.predict(X), label="monotonic")
+plt.plot(X, gam2.predict(X), label="concave")
+\end{lstlisting}
+
+\begin{block}{Available Constraints}
+monotonic\_inc, monotonic\_dec, convex, concave
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Custom Models}
+\begin{lstlisting}
+from pygam import GAM
+from pygam.datasets import trees
+
+X, y = trees(return_X_y=True)
+gam = GAM(distribution="gamma", link="log")
+gam.gridsearch(X, y)
+
+plt.scatter(y, gam.predict(X))
+gam.summary()
+\end{lstlisting}
+
+\begin{block}{Customization}
+Distributions: normal, binomial, poisson, gamma, inv\_gauss\\
+Links: identity, logit, log, inverse, inverse-squared\\
+Terms: $s()$, $f()$, $l()$, $te()$
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Expectiles for Varying Variance}
+\begin{lstlisting}
+from pygam import ExpectileGAM
+from pygam.datasets import mcycle
+
+X, y = mcycle(return_X_y=True)
+
+# Fit mean model
+gam50 = ExpectileGAM(expectile=0.5)
+gam50.gridsearch(X, y)
+lam = gam50.lam
+
+# Fit other expectiles
+gam95 = ExpectileGAM(expectile=0.95, lam=lam).fit(X, y)
+gam75 = ExpectileGAM(expectile=0.75, lam=lam).fit(X, y)
+gam25 = ExpectileGAM(expectile=0.25, lam=lam).fit(X, y)
+gam05 = ExpectileGAM(expectile=0.05, lam=lam).fit(X, y)
+
+# Plot
+XX = gam50.generate_X_grid(term=0, n=500)
+plt.scatter(X, y, c="k", alpha=0.2)
+plt.plot(XX, gam95.predict(XX), label="0.95")
+plt.plot(XX, gam50.predict(XX), label="0.50")
+plt.plot(XX, gam05.predict(XX), label="0.05")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Expectiles vs Quantiles}
+\begin{block}{Expectiles}
+\begin{itemize}
+    \item Model tail expectations (not tail mass)
+    \item Faster to fit than quantiles
+    \item Less interpretable
+    \item Can model varying variance
+\end{itemize}
+\end{block}
+
+\begin{block}{Use Cases}
+\begin{itemize}
+    \item When variance changes with predictors
+    \item Risk modeling
+    \item Uncertainty quantification
+    \item Non-parametric distribution modeling
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Common Models in pyGAM}
+\begin{block}{Pre-built Models}
+\begin{itemize}
+    \item \texttt{LinearGAM}: Identity link, Normal
+    \item \texttt{LogisticGAM}: Logit link, Binomial
+    \item \texttt{PoissonGAM}: Log link, Poisson
+    \item \texttt{GammaGAM}: Log link, Gamma
+    \item \texttt{InvGaussGAM}: Log link, Inverse Gaussian
+    \item \texttt{ExpectileGAM}: Varying variance
+\end{itemize}
+\end{block}
+
+\begin{block}{Benefits}
+Less boilerplate, extra features, optimized, still customizable
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Advantages of GAMs}
+\begin{enumerate}
+    \item \textbf{Interpretability}: Can visualize each feature's effect
+    \item \textbf{Flexibility}: Automatic non-linear modeling
+    \item \textbf{Regularization}: Smoothing prevents overfitting
+    \item \textbf{Statistical Inference}: P-values, confidence intervals
+    \item \textbf{Extensibility}: Works with many distributions
+    \item \textbf{Partial Dependence}: Understand feature contributions
+    \item \textbf{Constraints}: Encode domain knowledge
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{When to Use GAMs}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Good For}
+\begin{itemize}
+    \item Exploratory analysis
+    \item Interpretability needed
+    \item Non-linear relationships
+    \item Count/binary data
+    \item Time series smoothing
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Consider Alternatives}
+\begin{itemize}
+    \item Very high-dimensional
+    \item Complex interactions
+    \item Interpretability not needed
+    \item Extremely large datasets
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{block}{Key Takeaways}
+\begin{itemize}
+    \item GAMs balance flexibility and interpretability
+    \item pyGAM provides easy-to-use interface
+    \item Automatic smoothing parameter selection
+    \item Rich visualization capabilities
+\end{itemize}
+\end{block}
+
+\begin{block}{Next Steps}
+\begin{itemize}
+    \item Try examples from notebooks
+    \item Experiment with different terms
+    \item Tune smoothing parameters
+    \item Visualize partial dependence
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{References}
+\begin{itemize}
+    \item pyGAM documentation: \texttt{pygam.readthedocs.io}
+    \item Hastie, Tibshirani, Friedman: \textit{The Elements of Statistical Learning}
+    \item Wood, S. N.: \textit{Generalized Additive Models: An Introduction with R}
+    \item GAM: The Predictive Modeling Silver Bullet (Kim Larsen)
+\end{itemize}
+\end{frame}
+
+\end{document}
+

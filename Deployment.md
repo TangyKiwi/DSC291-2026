@@ -23,7 +23,7 @@ Environment.
 
 4. make taxi notebook work with S3 repo.
 
-5. 
+5. adding a new image in the grader account - Prof Freund will use test it. Aakash to share the blog with Prof.
 
 
 

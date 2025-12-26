@@ -1,7 +1,6 @@
 *.pyc
 *.dot
 *.pdf
-*.png
 .ipynb_checkpoints
 *.gz
 data/accounts.*.csv

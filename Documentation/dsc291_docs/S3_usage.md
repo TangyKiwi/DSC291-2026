@@ -62,10 +62,10 @@ https://chatgpt.com/s/t_692a823738d8819187ba21785928a376
 
 ### Troubleshooting
 
-- “fatal error: Unable to locate credentials”
+- <span style="color: red;">“fatal error: Unable to locate credentials”</span>
   - Re-run `aws configure` or re-paste the portal exports in the same terminal.
   - Open a new shell? Re-set the environment or use a profile.
-- “ExpiredToken”
+- <span style="color: red;">“ExpiredToken”</span>
   - Temporary credentials expired. Re-generate keys from the portal and re-configure.
-- “AccessDenied” or “bucket not found”
+- <span style="color: red;">“AccessDenied”</span> or <span style="color: red;">“bucket not found”</span>
   - Check the bucket name/path and region. Ensure you’re using the latest credentials.

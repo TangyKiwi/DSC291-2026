@@ -36,7 +36,7 @@ Cmd+Shift+P (Ctrl+Shift+P) → type ssh → you should see `my_aws_instance` . C
 
 **Step4:** open the cloned project [dask-CSE255](https://github.com/yoavfreund/dask-CSE255).
 
-**VOILA!** 💥💥💥💥. We can use GenAI inside the project!!
+Now, we can use GenAI inside the project!!
 
 <p align="center">
   <img src="assets/ssh_tunneling_cursor.png" alt="SSH tunneling in Cursor" width="70%">

@@ -1,4 +1,5 @@
 \frametitle{Real-World Example: Flight Data}
+\small
 \begin{lstlisting}
 # Read flight data from S3
 df = dd.read_parquet('s3://bucket/flights/*.parquet')
@@ -11,9 +12,6 @@ by_airline = delayed_flights.groupby('carrier').size()
 
 # Compute result
 result = by_airline.compute()
-
-# Display
-print(result)
 \end{lstlisting}
 
 \textbf{Complete Workflow:}
@@ -23,12 +21,3 @@ print(result)
     \item Group and aggregate (lazy)
     \item Compute (executes everything)
 \end{enumerate}
-
-\vspace{0.3cm}
-\textbf{What Happens:}
-\begin{itemize}
-    \item All operations build task graph
-    \item Scheduler optimizes execution
-    \item Data processed in parallel
-    \item Results combined
-\end{itemize}

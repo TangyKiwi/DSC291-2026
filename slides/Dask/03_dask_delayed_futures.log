@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  28 DEC 2025 16:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  6 JAN 2026 11:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -735,35 +735,106 @@ File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
 
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box79
+)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen299
+\pgf@nodesepend=\dimen300
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+))
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen301
+\pgffor@skip=\dimen302
+\pgffor@stack=\toks47
+\pgffor@toks=\toks48
+))
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count353
+\pgfplotmarksize=\dimen303
+)
+\tikz@lastx=\dimen304
+\tikz@lasty=\dimen305
+\tikz@lastxsaved=\dimen306
+\tikz@lastysaved=\dimen307
+\tikz@lastmovetox=\dimen308
+\tikz@lastmovetoy=\dimen309
+\tikzleveldistance=\dimen310
+\tikzsiblingdistance=\dimen311
+\tikz@figbox=\box80
+\tikz@figbox@bg=\box81
+\tikz@tempbox=\box82
+\tikz@tempbox@bg=\box83
+\tikztreelevel=\count354
+\tikznumberofchildren=\count355
+\tikznumberofcurrentchild=\count356
+\tikz@fig@count=\count357
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count358
+\pgfmatrixcurrentcolumn=\count359
+\pgf@matrix@numberofcolumns=\count360
+)
+\tikz@expandcount=\count361
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
 (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count353
-\l__pdf_internal_box=\box79
+\l__color_backend_stack_int=\count362
+\l__pdf_internal_box=\box84
 )
 (./03_dask_delayed_futures.aux)
 \openout1 = `03_dask_delayed_futures.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -801,17 +872,17 @@ LaTeX Font Info:    ... okay on input line 27.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count354
-\scratchdimen=\dimen299
-\scratchbox=\box80
-\nofMPsegments=\count355
-\nofMParguments=\count356
-\everyMPshowfont=\toks47
-\MPscratchCnt=\count357
-\MPscratchDim=\dimen300
-\MPnumerator=\count358
-\makeMPintoPDFobject=\count359
-\everyMPtoPDFconversion=\toks48
+\scratchcounter=\count363
+\scratchdimen=\dimen312
+\scratchbox=\box85
+\nofMPsegments=\count364
+\nofMParguments=\count365
+\everyMPshowfont=\toks49
+\MPscratchCnt=\count366
+\MPscratchDim=\dimen313
+\MPnumerator=\count367
+\makeMPintoPDFobject=\count368
+\everyMPtoPDFconversion=\toks50
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -821,64 +892,64 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 27.
+Package hyperref Info: Link coloring OFF on input line 28.
 
 (./03_dask_delayed_futures.out) (./03_dask_delayed_futures.out)
 \@outlinefile=\write5
 \openout5 = `03_dask_delayed_futures.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 27.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 27.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 28.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 27.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 27.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 27.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 27.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 28.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 27.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 27.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 27.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 28.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 27.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 27.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 27.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 28.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 27.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 27.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 28.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 27.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 28.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 27.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 27.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 27.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 27.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 27.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 27.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 27.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 28.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 2
-7.
+8.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 2
-7.
+8.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 27.
+ut line 28.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/translator/translator-basic-dicti
 onary-English.dict
@@ -904,41 +975,44 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-\c@lstlisting=\count360
+\c@lstlisting=\count369
  (./03_dask_delayed_futures.nav)
 
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
+Overfull \vbox (71.26163pt too high) detected at line 70
+ []
 
 
-(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+[2
+
+]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 99.
+
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 99.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 55.
+ut line 99.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
 
-[2
-
-]
-
 [3
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 101.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 116.
 
 
 [4
@@ -950,7 +1024,7 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 3.
 )
-Overfull \vbox (64.17052pt too high) detected at line 134
+Overfull \vbox (64.17052pt too high) detected at line 149
  []
 
 
@@ -961,7 +1035,7 @@ Overfull \vbox (64.17052pt too high) detected at line 134
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
-Overfull \vbox (47.64964pt too high) detected at line 165
+Overfull \vbox (43.46332pt too high) detected at line 192
  []
 
 
@@ -979,7 +1053,7 @@ Overfull \vbox (47.64964pt too high) detected at line 165
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
-Overfull \vbox (38.17052pt too high) detected at line 218
+Overfull \vbox (121.8479pt too high) detected at line 259
  []
 
 
@@ -990,7 +1064,7 @@ Overfull \vbox (38.17052pt too high) detected at line 218
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
-Overfull \vbox (68.53043pt too high) detected at line 249
+Overfull \vbox (68.53043pt too high) detected at line 290
  []
 
 
@@ -1001,6 +1075,10 @@ Overfull \vbox (68.53043pt too high) detected at line 249
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
+Overfull \vbox (19.24861pt too high) detected at line 330
+ []
+
+
 
 [10
 
@@ -1008,7 +1086,7 @@ Overfull \vbox (68.53043pt too high) detected at line 249
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
-Overfull \vbox (76.24965pt too high) detected at line 308
+Overfull \vbox (76.24965pt too high) detected at line 364
  []
 
 
@@ -1019,7 +1097,7 @@ Overfull \vbox (76.24965pt too high) detected at line 308
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
-Overfull \vbox (19.86635pt too high) detected at line 337
+Overfull \vbox (19.86635pt too high) detected at line 393
  []
 
 
@@ -1030,7 +1108,7 @@ Overfull \vbox (19.86635pt too high) detected at line 337
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
-Overfull \vbox (20.45801pt too high) detected at line 365
+Overfull \vbox (98.14833pt too high) detected at line 440
  []
 
 
@@ -1049,7 +1127,7 @@ Overfull \vbox (20.45801pt too high) detected at line 365
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
-Overfull \vbox (41.86635pt too high) detected at line 456
+Overfull \vbox (41.86635pt too high) detected at line 531
  []
 
 
@@ -1060,7 +1138,7 @@ Overfull \vbox (41.86635pt too high) detected at line 456
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
-Overfull \vbox (17.87466pt too high) detected at line 485
+Overfull \vbox (51.83415pt too high) detected at line 567
  []
 
 
@@ -1071,7 +1149,7 @@ Overfull \vbox (17.87466pt too high) detected at line 485
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
-Overfull \vbox (28.73718pt too high) detected at line 515
+Overfull \vbox (28.73718pt too high) detected at line 597
  []
 
 
@@ -1082,7 +1160,7 @@ Overfull \vbox (28.73718pt too high) detected at line 515
 \openout4 = `03_dask_delayed_futures.vrb'.
 
  (./03_dask_delayed_futures.vrb)
-Overfull \vbox (19.86635pt too high) detected at line 544
+Overfull \vbox (19.86635pt too high) detected at line 626
  []
 
 
@@ -1094,7 +1172,7 @@ Overfull \vbox (19.86635pt too high) detected at line 544
 [20
 
 ]
-Overfull \vbox (13.2023pt too high) detected at line 599
+Overfull \vbox (13.2023pt too high) detected at line 681
  []
 
 
@@ -1102,7 +1180,7 @@ Overfull \vbox (13.2023pt too high) detected at line 599
 [21
 
 ]
-Overfull \vbox (5.29276pt too high) detected at line 626
+Overfull \vbox (5.29276pt too high) detected at line 708
  []
 
 
@@ -1129,24 +1207,25 @@ Package rerunfilecheck Info: File `03_dask_delayed_futures.out' has not changed
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 23684 strings out of 473190
- 449330 string characters out of 5715801
- 1108140 words of memory out of 5000000
- 46401 multiletter control sequences out of 15000+600000
- 566216 words of font info for 63 fonts, out of 8000000 for 9000
+ 26958 strings out of 473190
+ 524749 string characters out of 5715801
+ 1174975 words of memory out of 5000000
+ 49633 multiletter control sequences out of 15000+600000
+ 567415 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,123p,415b,1344s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></
-usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><
-/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
-usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></u
-sr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on 03_dask_delayed_futures.pdf (22 pages, 160433 bytes).
+usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></us
+r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></u
+sr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
+/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on 03_dask_delayed_futures.pdf (22 pages, 172367 bytes).
 PDF statistics:
- 695 PDF objects out of 1000 (max. 8388607)
- 601 compressed objects within 7 object streams
+ 700 PDF objects out of 1000 (max. 8388607)
+ 604 compressed objects within 7 object streams
  45 named destinations out of 1000 (max. 500000)
  85 words of extra memory for PDF output out of 10000 (max. 10000000)
 

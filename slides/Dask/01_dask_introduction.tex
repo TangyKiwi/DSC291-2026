@@ -6,6 +6,8 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{amsmath}
+\usepackage{tikz}
+
 \usepackage{url}
 
 % Code listing setup
@@ -37,14 +39,31 @@
 \end{itemize}
 
 \vspace{0.5cm}
-\textbf{Visual Concept:}
-\begin{itemize}
-    \item Left side: Small data (fits in RAM) $\rightarrow$ Pandas/NumPy work fine
-    \item Right side: Large data (exceeds RAM) $\rightarrow$ Need Dask/Spark
-\end{itemize}
+\begin{figure}[h]
+    \centering
+    % Draw a conceptual "data size vs. memory capacity" with TikZ
+    \begin{tikzpicture}[x=4cm, y=1cm]
+        % Draw axes
+        \draw[->] (0,0) -- (2.5,0) node[right] {Data Size};
+        \draw[->] (0,0) -- (0,2.5) node[above] {Fits in RAM?};
 
-\vspace{0.3cm}
-\small{\textit{Graphics: Diagram showing data size vs memory capacity}}
+        % Memory threshold line
+        \draw[dashed,thick,color=red] (1,0) -- (1,2.2);
+        \node[red,below] at (1,0) {Memory Limit};
+
+        % Left: Small data zone
+        \fill[green!30] (0,0) rectangle (1,2.2);
+        \node[align=center] at (0.5,1.8) {\small\textbf{Small Data}\\\scriptsize(Fits in RAM)};
+        \node[align=center,green!50!black] at (0.5,1.0) {\scriptsize\textbf{Pandas/NumPy}};
+
+        % Right: Large data zone
+        \fill[orange!30] (1,0) rectangle (2.3,2.2);
+        \node[align=center] at (1.7,1.8) {\small\textbf{Large Data}\\\scriptsize(Exceeds RAM)};
+        \node[align=center,orange!70!black] at (1.7,1.0) {\scriptsize\textbf{Dask/Spark}};
+
+    \end{tikzpicture}
+
+\end{figure}
 \end{frame}
 
 \begin{frame}{What is Dask?}
@@ -53,12 +72,8 @@
     \item Scales from laptop to cluster
     \item Familiar APIs (NumPy-like, Pandas-like)
 \end{itemize}
-
-\vspace{0.5cm}
-\begin{center}
-\small{Dask Logo: \url{https://docs.dask.org/en/latest/_images/dask_horizontal.svg}}
-\end{center}
 \end{frame}
+
 
 \begin{frame}{Dask's Place in the Ecosystem}
 \textbf{Tool Comparison:}
@@ -76,13 +91,6 @@ Spark & Cluster & JVM (Scala/Java/Python) & Very large data, enterprise \\
 \end{tabular}
 \end{center}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{itemize}
-    \item NumPy/Pandas: Small box (single machine)
-    \item Dask: Medium box (single machine or cluster)
-    \item Spark: Large box (cluster)
-\end{itemize}
 \end{frame}
 
 \begin{frame}{Why Dask?}
@@ -117,13 +125,25 @@ result = df.groupby('col').sum()  # Still no data loaded
 final = result.compute()  # NOW data is loaded and processed
 \end{lstlisting}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{enumerate}
-    \item Step 1: Build graph (lightweight)
-    \item Step 2: Optimize graph
-    \item Step 3: Execute (heavy computation)
-\end{enumerate}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Step 1: Build graph
+    \node[draw, rectangle, fill=blue!20, text width=2cm, align=center] (build) {Step 1:\\Build graph\\(lightweight)};
+    
+    % Arrow
+    \draw[->, thick] (build.east) -- ++(0.3,0);
+    
+    % Step 2: Optimize
+    \node[draw, rectangle, fill=green!20, text width=2cm, align=center, right of=build, xshift=0.8cm] (optimize) {Step 2:\\Optimize graph};
+    
+    % Arrow
+    \draw[->, thick] (optimize.east) -- ++(0.3,0);
+    
+    % Step 3: Execute
+    \node[draw, rectangle, fill=red!20, text width=2cm, align=center, right of=optimize, xshift=0.8cm] (execute) {Step 3:\\Execute\\(heavy)};
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Task Graphs}
@@ -134,13 +154,35 @@ final = result.compute()  # NOW data is loaded and processed
     \item Scheduler optimizes execution order
 \end{itemize}
 
-\vspace{0.5cm}
-\textbf{Visual Concept:}
-\begin{verbatim}
-read_file1 -> process1 -+
-read_file2 -> process2 --> combine -> write
-read_file3 -> process3 -+
-\end{verbatim}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Read nodes
+    \node[draw, rectangle, fill=blue!20] (read1) {read\_file1};
+    \node[draw, rectangle, fill=blue!20, below of=read1] (read2) {read\_file2};
+    \node[draw, rectangle, fill=blue!20, below of=read2] (read3) {read\_file3};
+    
+    % Process nodes
+    \node[draw, rectangle, fill=green!20, right of=read1, xshift=1.2cm] (proc1) {process1};
+    \node[draw, rectangle, fill=green!20, right of=read2, xshift=1.2cm] (proc2) {process2};
+    \node[draw, rectangle, fill=green!20, right of=read3, xshift=1.2cm] (proc3) {process3};
+    
+    % Combine node
+    \node[draw, rectangle, fill=orange!20, right of=proc2, xshift=1.2cm] (combine) {combine};
+    
+    % Write node
+    \node[draw, rectangle, fill=red!20, right of=combine, xshift=1.2cm] (write) {write};
+    
+    % Edges
+    \draw[->, thick] (read1) -- (proc1);
+    \draw[->, thick] (read2) -- (proc2);
+    \draw[->, thick] (read3) -- (proc3);
+    \draw[->, thick] (proc1) -- (combine);
+    \draw[->, thick] (proc2) -- (combine);
+    \draw[->, thick] (proc3) -- (combine);
+    \draw[->, thick] (combine) -- (write);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}{Dask Collections Overview}
@@ -166,6 +208,12 @@ read_file3 -> process3 -+
     \begin{itemize}
         \item Custom workflows, general parallelization
     \end{itemize}
+
+       \item \textbf{Futures}: Arbitrary Python functions
+    \begin{itemize}
+        \item Non-blocking distributed calculations. Latency minimization.
+    \end{itemize}
+
 \end{enumerate}
 \end{frame}
 
@@ -184,8 +232,23 @@ read_file3 -> process3 -+
     \item Operations happen in parallel across partitions
 \end{itemize}
 
-\vspace{0.3cm}
-\small{\textit{Graphics: Diagram showing partitioned DataFrame structure}}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[scale=0.7, every node/.style={font=\footnotesize}]
+    % Draw DataFrame as a large rectangle
+    \draw[thick] (0,0) rectangle (5.5,1.8) node[pos=.5] {};
+    \node[anchor=south west, font=\small] at (0,1.85) {\textbf{Dask DataFrame}};
+    
+    % Draw partitions inside DataFrame
+    \foreach \x/\label in {0/Partition 1, 1.8/Partition 2, 3.6/Partition 3} {
+        \draw[fill=blue!10,thick] (\x+0.1,0.2) rectangle (\x+1.7,1.6);
+        \node at (\x+0.9,0.9) {\label};
+        \draw[->,thick] (\x+0.9,0.1) -- (\x+0.9,-0.6);
+        \node[align=center, font=\tiny] at (\x+0.9,-0.95) {pandas\\DataFrame};
+    }
+\end{tikzpicture}
+\end{center}
+
 \end{frame}
 
 \begin{frame}{When to Use Dask}
@@ -304,7 +367,7 @@ result.compute()  # NOW data is loaded and processed
     \item Scales from laptop to cluster
 \end{itemize}
 
-\vspace{0.5cm}
+\vspace{0.3cm}
 \textbf{Next Steps:}
 \begin{itemize}
     \item Learn Dask DataFrames (most common use case)
@@ -312,7 +375,7 @@ result.compute()  # NOW data is loaded and processed
     \item Explore distributed computing
 \end{itemize}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 \textbf{Core Concepts:}
 \begin{itemize}
     \item Lazy evaluation

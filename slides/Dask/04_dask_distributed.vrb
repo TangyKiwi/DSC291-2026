@@ -17,12 +17,24 @@ client = Client(n_workers=4)
     \item Client can be anywhere (laptop, EC2, etc.)
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{verbatim}
-EC2 Instance 1: Scheduler
-EC2 Instance 2: Worker 1
-EC2 Instance 3: Worker 2
-EC2 Instance 4: Worker 3
-Your Laptop: Client (submits tasks)
-\end{verbatim}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Laptop
+    \node[draw, rectangle, fill=blue!20, text width=2cm, align=center] (laptop) {Laptop:\\Client};
+
+    % Scheduler
+    \node[draw, rectangle, fill=orange!20, below of=laptop, xshift=-2.2cm, text width=2cm, align=center] (scheduler) {EC2-1:\\Scheduler};
+
+    % Workers
+    \node[draw, rectangle, fill=green!20, below of=scheduler, xshift=-1.2cm, text width=1.5cm, align=center] (w1) {EC2-2:\\W1};
+    \node[draw, rectangle, fill=green!20, below of=scheduler, text width=1.5cm, align=center] (w2) {EC2-3:\\W2};
+    \node[draw, rectangle, fill=green!20, below of=scheduler, xshift=1.2cm, text width=1.5cm, align=center] (w3) {EC2-4:\\W3};
+
+    % Edges
+    \draw[->, thick] (laptop) -- (scheduler);
+    \draw[->, thick] (scheduler) -- (w1);
+    \draw[->, thick] (scheduler) -- (w2);
+    \draw[->, thick] (scheduler) -- (w3);
+\end{tikzpicture}
+\end{center}

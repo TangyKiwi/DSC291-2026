@@ -6,6 +6,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{amsmath}
+\usepackage{tikz}
 
 % Code listing setup
 \lstset{
@@ -73,12 +74,21 @@
     \item Better resource utilization
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{itemize}
-    \item Single machine: Limited resources
-    \item Distributed: Combined resources from multiple machines
-\end{itemize}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Single machine
+    \node[text width=2.5cm, align=center, font=\small] (single-label) {\textbf{Single Machine:}};
+    \node[draw, rectangle, fill=blue!20, below of=single-label, text width=2cm, align=center, minimum height=1.2cm] (single) {Limited\\Resources};
+    
+    % Distributed
+    \node[text width=2.5cm, align=center, font=\small, right of=single-label, xshift=1.5cm] (dist-label) {\textbf{Distributed:}};
+    \node[draw, rectangle, fill=green!20, below of=dist-label, xshift=-0.4cm, text width=1cm, align=center, minimum height=1.2cm] (m1) {M1};
+    \node[draw, rectangle, fill=green!20, below of=dist-label, xshift=0.4cm, text width=1cm, align=center, minimum height=1.2cm] (m2) {M2};
+    \node[draw, rectangle, fill=green!20, below of=dist-label, xshift=1.2cm, text width=1cm, align=center, minimum height=1.2cm] (m3) {M3};
+    \node[below of=m2, yshift=0.2cm, font=\tiny] {Combined};
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Client-Worker Architecture}
@@ -107,15 +117,28 @@
     \end{itemize}
 \end{enumerate}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{verbatim}
-Client (your code)
-    |
-Scheduler (coordinates)
-    |
-Workers (execute tasks)
-\end{verbatim}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Client
+    \node[draw, rectangle, fill=blue!20, text width=2.5cm, align=center] (client) {Client\\(your code)};
+    
+    % Scheduler
+    \node[draw, rectangle, fill=orange!20, below of=client, text width=2.5cm, align=center] (scheduler) {Scheduler\\(coordinates)};
+    
+    % Workers
+    \node[draw, rectangle, fill=green!20, below of=scheduler, xshift=-1.2cm, text width=1.2cm, align=center] (w1) {W1};
+    \node[draw, rectangle, fill=green!20, below of=scheduler, text width=1.2cm, align=center] (w2) {W2};
+    \node[draw, rectangle, fill=green!20, below of=scheduler, xshift=1.2cm, text width=1.2cm, align=center] (w3) {W3};
+    \node[below of=w2, yshift=0.2cm, font=\tiny] {execute tasks};
+    
+    % Edges
+    \draw[->, thick] (client) -- (scheduler);
+    \draw[->, thick] (scheduler) -- (w1);
+    \draw[->, thick] (scheduler) -- (w2);
+    \draw[->, thick] (scheduler) -- (w3);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Creating a Client}
@@ -186,14 +209,24 @@ client = Client(
 \end{itemize}
 
 \vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{verbatim}
-Machine with 8 cores:
-+-- Worker 1 (2 threads)
-+-- Worker 2 (2 threads)
-+-- Worker 3 (2 threads)
-+-- Worker 4 (2 threads)
-\end{verbatim}
+\begin{center}
+\begin{tikzpicture}[node distance=1cm, auto]
+    % Machine
+    \node[draw, rectangle, fill=blue!20, text width=4cm, align=center, minimum height=0.8cm] (machine) {Machine with 8 cores};
+    
+    % Workers
+    \node[draw, rectangle, fill=green!20, below of=machine, xshift=-1.5cm, text width=1.5cm, align=center] (w1) {Worker 1\\(2 threads)};
+    \node[draw, rectangle, fill=green!20, below of=machine, xshift=-0.5cm, text width=1.5cm, align=center] (w2) {Worker 2\\(2 threads)};
+    \node[draw, rectangle, fill=green!20, below of=machine, xshift=0.5cm, text width=1.5cm, align=center] (w3) {Worker 3\\(2 threads)};
+    \node[draw, rectangle, fill=green!20, below of=machine, xshift=1.5cm, text width=1.5cm, align=center] (w4) {Worker 4\\(2 threads)};
+    
+    % Edges
+    \draw[->, thick] (machine) -- (w1);
+    \draw[->, thick] (machine) -- (w2);
+    \draw[->, thick] (machine) -- (w3);
+    \draw[->, thick] (machine) -- (w4);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}{The Dashboard}
@@ -240,13 +273,34 @@ Machine with 8 cores:
     \item Debug slow operations
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{itemize}
-    \item Timeline showing tasks
-    \item Color-coded by worker
-    \item Gaps show idle time
-\end{itemize}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[x=0.25cm, y=0.7cm, scale=0.9]
+    % Timeline axis
+    \draw[->] (0,0) -- (13,0) node[right, font=\footnotesize] {Time};
+    \draw[->] (0,0) -- (0,3.5) node[above, font=\footnotesize] {Workers};
+    
+    % Worker labels
+    \node[left, font=\footnotesize] at (0,2.8) {W1};
+    \node[left, font=\footnotesize] at (0,2) {W2};
+    \node[left, font=\footnotesize] at (0,1.2) {W3};
+    \node[left, font=\footnotesize] at (0,0.4) {W4};
+    
+    % Tasks (color-coded by worker)
+    \fill[blue!70] (1,2.4) rectangle (3.5,3.2);
+    \fill[blue!70] (4.5,2.4) rectangle (7,3.2);
+    \fill[blue!70] (8.5,2.4) rectangle (10.5,3.2);
+    
+    \fill[green!70] (1.5,1.6) rectangle (5,2.4);
+    \fill[green!70] (6,1.6) rectangle (9.5,2.4);
+    
+    \fill[orange!70] (1,0.8) rectangle (4.5,1.6);
+    \fill[orange!70] (7.5,0.8) rectangle (11,1.6);
+    
+    \fill[red!70] (2.5,0) rectangle (6,0.8);
+    \fill[red!70] (6.5,0) rectangle (10,0.8);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}{Dashboard: Worker Memory}
@@ -266,13 +320,32 @@ Machine with 8 cores:
     \item Memory leaks
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{itemize}
-    \item Bar chart per worker
-    \item Shows current memory usage
-    \item Red zone = near limit
-\end{itemize}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[x=0.4cm, y=0.25cm, scale=0.9]
+    % Worker 1
+    \fill[green!70] (0,0) rectangle (2.5,0.8);
+    \node[left, font=\footnotesize] at (0,0.4) {W1:};
+    \node[right, font=\footnotesize] at (2.5,0.4) {3GB/8GB};
+    
+    % Worker 2
+    \fill[green!70] (0,1.2) rectangle (4,2);
+    \node[left, font=\footnotesize] at (0,1.6) {W2:};
+    \node[right, font=\footnotesize] at (4,1.6) {5GB/8GB};
+    
+    % Worker 3
+    \fill[red!70] (0,2.4) rectangle (6.5,3.2);
+    \node[left, font=\footnotesize] at (0,2.8) {W3:};
+    \node[right, font=\footnotesize] at (6.5,2.8) {7.5GB/8GB};
+    
+    % Limit line
+    \draw[thick, red, dashed] (7,0) -- (7,3.5);
+    \node[above, red, font=\tiny] at (7,3.5) {Limit};
+    
+    % Red zone indicator
+    \fill[red!20, opacity=0.3] (6,0) rectangle (7,3.5);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Performance Monitoring}
@@ -320,12 +393,26 @@ df_persisted = df.persist()
     \item \textbf{Persist}: Intermediate results, reused data
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{itemize}
-    \item Compute: Execute $\rightarrow$ Return $\rightarrow$ Discard
-    \item Persist: Execute $\rightarrow$ Keep in memory $\rightarrow$ Reuse
-\end{itemize}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Compute path
+    \node[text width=2.5cm, align=center, font=\small] (comp-label) {\textbf{Compute:}};
+    \node[draw, rectangle, fill=blue!20, below of=comp-label, text width=1.2cm, align=center] (exec1) {Execute};
+    \node[draw, rectangle, fill=green!20, right of=exec1, text width=1.2cm, align=center] (ret1) {Return};
+    \node[draw, rectangle, fill=red!20, right of=ret1, text width=1.2cm, align=center] (disc1) {Discard};
+    \draw[->, thick] (exec1) -- (ret1);
+    \draw[->, thick] (ret1) -- (disc1);
+    
+    % Persist path
+    \node[text width=2.5cm, align=center, font=\small, below of=exec1, yshift=-0.8cm] (pers-label) {\textbf{Persist:}};
+    \node[draw, rectangle, fill=blue!20, below of=pers-label, text width=1.2cm, align=center] (exec2) {Execute};
+    \node[draw, rectangle, fill=orange!20, right of=exec2, text width=1.2cm, align=center] (keep) {Keep};
+    \node[draw, rectangle, fill=green!20, right of=keep, text width=1.2cm, align=center] (reuse) {Reuse};
+    \draw[->, thick] (exec2) -- (keep);
+    \draw[->, thick] (keep) -- (reuse);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Memory Management}
@@ -346,13 +433,19 @@ df_persisted = df.persist()
     \item Clear persisted data when done
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{verbatim}
-Worker 1: [Partition 1, Partition 2] (4GB used / 8GB limit)
-Worker 2: [Partition 3, Partition 4] (3GB used / 8GB limit)
-Worker 3: [Partition 5] (2GB used / 8GB limit)
-\end{verbatim}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=0.8cm, auto, scale=0.9, every node/.style={font=\footnotesize}]
+    % Worker 1
+    \node[draw, rectangle, fill=blue!20, text width=3.5cm, align=left, minimum height=0.9cm] (w1) {W1: [P1, P2]\\\tiny(4GB/8GB)};
+    
+    % Worker 2
+    \node[draw, rectangle, fill=green!20, below of=w1, text width=3.5cm, align=left, minimum height=0.9cm] (w2) {W2: [P3, P4]\\\tiny(3GB/8GB)};
+    
+    % Worker 3
+    \node[draw, rectangle, fill=orange!20, below of=w2, text width=3.5cm, align=left, minimum height=0.9cm] (w3) {W3: [P5]\\\tiny(2GB/8GB)};
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}{Performance Optimization: Partitioning}
@@ -400,12 +493,30 @@ result3 = df_filtered.groupby('cat').count()
     \item Uses more memory
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{itemize}
-    \item Without persist: Filter $\rightarrow$ Groupby $\rightarrow$ Filter $\rightarrow$ Groupby (recomputes filter)
-    \item With persist: Filter $\rightarrow$ Persist $\rightarrow$ Groupby $\rightarrow$ Groupby (reuses filtered data)
-\end{itemize}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=0.8cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Without persist
+    \node[text width=4cm, align=center, font=\small] (no-label) {\textbf{Without persist:}};
+    \node[draw, rectangle, fill=blue!20, below of=no-label, xshift=-1.2cm, text width=0.8cm, align=center, font=\tiny] (f1) {F};
+    \node[draw, rectangle, fill=green!20, right of=f1, text width=0.8cm, align=center, font=\tiny] (g1) {G};
+    \node[draw, rectangle, fill=blue!20, right of=g1, text width=0.8cm, align=center, font=\tiny] (f2) {F};
+    \node[draw, rectangle, fill=green!20, right of=f2, text width=0.8cm, align=center, font=\tiny] (g2) {G};
+    \draw[->, thick] (f1) -- (g1);
+    \draw[->, thick] (g1) -- (f2);
+    \draw[->, thick] (f2) -- (g2);
+    
+    % With persist
+    \node[text width=4cm, align=center, font=\small, below of=f1, yshift=-0.8cm] (yes-label) {\textbf{With persist:}};
+    \node[draw, rectangle, fill=blue!20, below of=yes-label, xshift=-0.8cm, text width=0.8cm, align=center, font=\tiny] (f3) {F};
+    \node[draw, rectangle, fill=orange!20, right of=f3, text width=0.8cm, align=center, font=\tiny] (pers) {P};
+    \node[draw, rectangle, fill=green!20, right of=pers, text width=0.8cm, align=center, font=\tiny] (g3) {G};
+    \node[draw, rectangle, fill=green!20, right of=g3, text width=0.8cm, align=center, font=\tiny] (g4) {G};
+    \draw[->, thick] (f3) -- (pers);
+    \draw[->, thick] (pers) -- (g3);
+    \draw[->, thick] (pers) -- (g4);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}{Debugging: Task Failures}
@@ -482,13 +593,39 @@ result3 = df_filtered.groupby('cat').count()
     \item Network transfer can be bottleneck
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{itemize}
-    \item Start: 2 workers
-    \item Scale up: 4 workers, 8 workers, 16 workers
-    \item Each step adds capacity
-\end{itemize}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Start
+    \node[text width=1.5cm, align=center, font=\small] (start-label) {\textbf{Start:}};
+    \node[draw, rectangle, fill=blue!20, below of=start-label, xshift=-0.4cm, text width=0.6cm, align=center, minimum height=0.6cm] (w1) {W1};
+    \node[draw, rectangle, fill=blue!20, below of=start-label, xshift=0.4cm, text width=0.6cm, align=center, minimum height=0.6cm] (w2) {W2};
+    
+    % Arrow
+    \draw[->, thick] (w2.east) -- ++(0.4,0);
+    
+    % Scale 1
+    \node[text width=1.5cm, align=center, font=\small, right of=start-label, xshift=1.2cm] (scale1-label) {\textbf{4:}};
+    \node[draw, rectangle, fill=green!20, below of=scale1-label, xshift=-0.6cm, text width=0.5cm, align=center, minimum height=0.6cm] (w3) {W1};
+    \node[draw, rectangle, fill=green!20, below of=scale1-label, xshift=-0.2cm, text width=0.5cm, align=center, minimum height=0.6cm] (w4) {W2};
+    \node[draw, rectangle, fill=green!20, below of=scale1-label, xshift=0.2cm, text width=0.5cm, align=center, minimum height=0.6cm] (w5) {W3};
+    \node[draw, rectangle, fill=green!20, below of=scale1-label, xshift=0.6cm, text width=0.5cm, align=center, minimum height=0.6cm] (w6) {W4};
+    
+    % Arrow
+    \draw[->, thick] (w6.east) -- ++(0.4,0);
+    
+    % Scale 2
+    \node[text width=1.5cm, align=center, font=\small, right of=scale1-label, xshift=1.2cm] (scale2-label) {\textbf{8:}};
+    \node[below of=scale2-label, yshift=0.2cm, font=\tiny] {8 boxes};
+    
+    % Arrow
+    \draw[->, thick] (scale2-label.east) -- ++(0.4,0);
+    
+    % Scale 3
+    \node[text width=1.5cm, align=center, font=\small, right of=scale2-label, xshift=1.2cm] (scale3-label) {\textbf{16:}};
+    \node[below of=scale3-label, yshift=0.2cm, font=\tiny] {16 boxes};
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Connecting to EC2 Cluster}
@@ -510,15 +647,27 @@ client = Client(n_workers=4)
     \item Client can be anywhere (laptop, EC2, etc.)
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{verbatim}
-EC2 Instance 1: Scheduler
-EC2 Instance 2: Worker 1
-EC2 Instance 3: Worker 2
-EC2 Instance 4: Worker 3
-Your Laptop: Client (submits tasks)
-\end{verbatim}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Laptop
+    \node[draw, rectangle, fill=blue!20, text width=2cm, align=center] (laptop) {Laptop:\\Client};
+    
+    % Scheduler
+    \node[draw, rectangle, fill=orange!20, below of=laptop, xshift=-2.2cm, text width=2cm, align=center] (scheduler) {EC2-1:\\Scheduler};
+    
+    % Workers
+    \node[draw, rectangle, fill=green!20, below of=scheduler, xshift=-1.2cm, text width=1.5cm, align=center] (w1) {EC2-2:\\W1};
+    \node[draw, rectangle, fill=green!20, below of=scheduler, text width=1.5cm, align=center] (w2) {EC2-3:\\W2};
+    \node[draw, rectangle, fill=green!20, below of=scheduler, xshift=1.2cm, text width=1.5cm, align=center] (w3) {EC2-4:\\W3};
+    
+    % Edges
+    \draw[->, thick] (laptop) -- (scheduler);
+    \draw[->, thick] (scheduler) -- (w1);
+    \draw[->, thick] (scheduler) -- (w2);
+    \draw[->, thick] (scheduler) -- (w3);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}{Best Practices}

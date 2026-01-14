@@ -6,6 +6,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{amsmath}
+\usepackage{tikz}
 
 % Code listing setup
 \lstset{
@@ -46,12 +47,26 @@
     \item Independent function calls
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{itemize}
-    \item Sequential processing: [Task1] $\rightarrow$ [Task2] $\rightarrow$ [Task3] (slow)
-    \item Parallel processing: [Task1, Task2, Task3] simultaneously (fast)
-\end{itemize}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1cm, auto, scale=0.8, every node/.style={font=\footnotesize}]
+    % Sequential
+    \node[text width=3cm, align=center, font=\small] (seq-label) {\textbf{Sequential (slow):}};
+    \node[draw, rectangle, fill=blue!20, below of=seq-label, xshift=-1cm] (t1) {Task1};
+    \node[draw, rectangle, fill=blue!20, below of=seq-label] (t2) {Task2};
+    \node[draw, rectangle, fill=blue!20, below of=seq-label, xshift=1cm] (t3) {Task3};
+    \draw[->, thick] (t1) -- (t2);
+    \draw[->, thick] (t2) -- (t3);
+    
+    % Parallel
+    \node[text width=3cm, align=center, font=\small, below of=t2, yshift=-0.7cm] (par-label) {\textbf{Parallel (fast):}};
+    \node[draw, rectangle, fill=green!20, below of=par-label, xshift=-1cm] (p1) {Task1};
+    \node[draw, rectangle, fill=green!20, below of=par-label] (p2) {Task2};
+    \node[draw, rectangle, fill=green!20, below of=par-label, xshift=1cm] (p3) {Task3};
+    \draw[<->, thick, dashed] (p1) -- (p2);
+    \draw[<->, thick, dashed] (p2) -- (p3);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}{Two Approaches}
@@ -155,13 +170,25 @@ z.compute()  # Executes inc(1), inc(2), then add(3, 4)
     \item Parallel execution when possible
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{verbatim}
-    inc(1) --+
-            +--> add(3, 4) -> result
-    inc(2) --+
-\end{verbatim}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Input nodes
+    \node[draw, rectangle, fill=blue!20] (inc1) {inc(1)};
+    \node[draw, rectangle, fill=blue!20, below of=inc1] (inc2) {inc(2)};
+    
+    % Add node
+    \node[draw, rectangle, fill=green!20, right of=inc1, xshift=1.5cm, yshift=-0.6cm] (add) {add(3, 4)};
+    
+    % Result node
+    \node[draw, rectangle, fill=red!20, right of=add, xshift=1.2cm] (result) {result};
+    
+    % Edges
+    \draw[->, thick] (inc1) -- (add);
+    \draw[->, thick] (inc2) -- (add);
+    \draw[->, thick] (add) -- (result);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Visualizing Task Graphs}
@@ -209,12 +236,26 @@ final = dask.compute(*results)
     \item Automatic dependency handling
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{verbatim}
-Sequential: file1 -> file2 -> file3 (slow)
-Parallel:   file1, file2, file3 simultaneously (fast)
-\end{verbatim}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1cm, auto, scale=0.8, every node/.style={font=\footnotesize}]
+    % Sequential
+    \node[text width=2.5cm, align=center, font=\small] (seq-label) {\textbf{Sequential (slow):}};
+    \node[draw, rectangle, fill=blue!20, below of=seq-label, xshift=-0.8cm] (f1) {file1};
+    \node[draw, rectangle, fill=blue!20, below of=seq-label] (f2) {file2};
+    \node[draw, rectangle, fill=blue!20, below of=seq-label, xshift=0.8cm] (f3) {file3};
+    \draw[->, thick] (f1) -- (f2);
+    \draw[->, thick] (f2) -- (f3);
+    
+    % Parallel
+    \node[text width=2.5cm, align=center, font=\small, below of=f2, yshift=-0.7cm] (par-label) {\textbf{Parallel (fast):}};
+    \node[draw, rectangle, fill=green!20, below of=par-label, xshift=-0.8cm] (p1) {file1};
+    \node[draw, rectangle, fill=green!20, below of=par-label] (p2) {file2};
+    \node[draw, rectangle, fill=green!20, below of=par-label, xshift=0.8cm] (p3) {file3};
+    \draw[<->, thick, dashed] (p1) -- (p2);
+    \draw[<->, thick, dashed] (p2) -- (p3);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Real-World Pattern: Read-Transform-Write}
@@ -264,13 +305,28 @@ dask.compute(*tasks)
     \item Futures: Eager (start immediately)
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{verbatim}
-Time 0: Submit task -> Get Future (pending)
-Time 1: Task executing (in background)
-Time 2: Task done -> Future (finished)
-\end{verbatim}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Time 0
+    \node[draw, rectangle, fill=blue!20, text width=2cm, align=center] (submit) {Submit task};
+    \node[draw, rectangle, fill=yellow!20, right of=submit, xshift=0.4cm, text width=2cm, align=center] (pending) {Future\\(pending)};
+    \draw[->, thick] (submit) -- node[above, font=\tiny] {Time 0} (pending);
+    
+    % Time 1
+    \node[draw, rectangle, fill=orange!20, below of=submit, text width=2cm, align=center] (exec) {Task executing};
+    \node[below of=exec, yshift=0.2cm, font=\tiny] {Time 1};
+    
+    % Time 2
+    \node[draw, rectangle, fill=green!20, below of=exec, text width=2cm, align=center] (done) {Task done};
+    \node[draw, rectangle, fill=green!20, right of=done, xshift=0.4cm, text width=2cm, align=center] (finished) {Future\\(finished)};
+    \draw[->, thick] (done) -- node[above, font=\tiny] {Time 2} (finished);
+    
+    % Vertical flow
+    \draw[->, thick, dashed] (pending) -- (exec);
+    \draw[->, thick, dashed] (exec) -- (done);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Futures: Basic Example}
@@ -353,15 +409,34 @@ results = client.gather(futures)
     \item Both return Futures
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{verbatim}
-file_list: [f1, f2, f3]
-    | map(process_file)
-futures: [Future1, Future2, Future3]
-    | gather
-results: [result1, result2, result3]
-\end{verbatim}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % File list
+    \node[draw, rectangle, fill=blue!20, text width=2.5cm, align=center] (files) {file\_list:\\
+        f1, f2, f3};
+    
+    % Map operation
+    \node[draw, rectangle, fill=orange!20, below of=files, text width=2.5cm, align=center] (map) {map(process\_file)};
+    
+    % Futures
+    \node[draw, rectangle, fill=yellow!20, below of=map, text width=2.5cm, align=center] (futures) {futures:\\
+        F1, F2, F3};
+    
+    % Gather operation
+    \node[draw, rectangle, fill=orange!20, below of=futures, text width=2.5cm, align=center] (gather) {gather};
+    
+    % Results
+    \node[draw, rectangle, fill=green!20, below of=gather, text width=2.5cm, align=center] (results) {results:\\
+        r1, r2, r3};
+    
+    % Edges
+    \draw[->, thick] (files) -- (map);
+    \draw[->, thick] (map) -- (futures);
+    \draw[->, thick] (futures) -- (gather);
+    \draw[->, thick] (gather) -- (results);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}{Delayed vs Futures: Lazy vs Eager}
@@ -476,12 +551,19 @@ final = result.compute()
     \item Best of both worlds
 \end{itemize}
 
-\vspace{0.3cm}
-\textbf{Visual Concept:}
-\begin{itemize}
-    \item Outer: Delayed graph (optimized)
-    \item Inner: Futures (immediate execution)
-\end{itemize}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm, auto, scale=0.85, every node/.style={font=\footnotesize}]
+    % Outer delayed graph
+    \node[draw, rectangle, fill=blue!20, text width=3cm, align=center, minimum height=1.2cm] (outer) {\textbf{Outer:}\\Delayed graph\\(optimized)};
+    
+    % Inner futures
+    \node[draw, rectangle, fill=green!20, below of=outer, text width=3cm, align=center, minimum height=1.2cm] (inner) {\textbf{Inner:}\\Futures\\(immediate)};
+    
+    % Connection
+    \draw[<->, thick, dashed] (outer.south) -- (inner.north);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Error Handling: Delayed}

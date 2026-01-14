@@ -6,7 +6,7 @@ AWS EC2 instances come with **AWS CLI** preinstalled.
 aws --version
 ```
 
-At the bottom of the [login page](https://ets-apps.ucsd.edu/individual/DSC291_WI26_A00), we see the option for [**Generate API Keys (for CLI/scripting)**](https://ets-apps.ucsd.edu/individual/DSC291_WI26_A00?user=grader-dsc291-07&mode=env). This will give you a list of secret access keys. These will help us connect to the **AWS S3**. Do:
+At the bottom of the [login page](https://ets-apps.ucsd.edu/individual/DSC291_WI26_G00), we see the option for **Generate API Keys (for CLI/scripting)**. This will give you a list of secret access keys. These will help us connect to the **AWS S3**. Do:
 
 ```bash
 aws configure

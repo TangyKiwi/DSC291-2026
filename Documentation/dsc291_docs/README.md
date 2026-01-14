@@ -30,6 +30,17 @@ Please coordinate with your teammates and ensure all required fields are filled 
 
 ## Setup Steps
 
+### Step 0: Login to AWS and Launch Instance
+
+Login to AWS portal and launch your EC2 instance.
+
+📖 **[logging_in.md](logging_in.md)**
+
+- Login to UCSD AWS Portal
+- Launch instance from DSC291 Base Image
+- Set up SSH access
+- Get your instance's public IP
+
 ### Step 1: Connect to EC2 with Cursor
 
 SSH into your AWS instance and connect via Cursor IDE.

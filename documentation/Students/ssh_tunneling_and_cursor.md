@@ -4,6 +4,8 @@
 
 **→** Download Cursor from here depending on your system configuration and OS. [Download Cursor](https://cursor.com/download)
 
+* Students can get a one year license to Cursor Pro from here: https://cursor.com/students
+  
 ### Launch an AWS instance
 
 **→** Lanuch an AWS instance from **`DSC291-BaseImage`** AMI from here: [AWS Portal](https://ets-apps.ucsd.edu/individual/DSC291_WI26_A00)

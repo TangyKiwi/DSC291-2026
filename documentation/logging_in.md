@@ -26,7 +26,7 @@ This guide explains how to log into AWS and start an EC2 instance.
 
    > **✅ PREFERRED METHOD: Launch from DSC291 Base Image**
    > 
-   > Navigate to **AMIs** inside **Images** and choose the **`DSC291_BASE_IMAGE`** AMI and launch an instance from that AMI. 
+   > Navigate to **AMIs** inside **Images**. Change the filter from "Owned by me" to **Private images** to view AMIs shared with your account. Then choose the **`DSC291_BASE_IMAGE`** AMI and launch an instance from that AMI.
 
 4. **Instance type**: Select **t3.medium**
 5. **Key pair**: 

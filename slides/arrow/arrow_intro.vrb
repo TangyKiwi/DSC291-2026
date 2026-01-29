@@ -1,10 +1,15 @@
-\frametitle{IPC / Feather: share Arrow data on disk}
+\frametitle{Parquet I/O with Arrow Engine}
+\small
+\textbf{Dask uses Arrow for Parquet:}
+\begin{itemize}
+    \item Default engine: \texttt{pyarrow} (Arrow-based)
+    \item Alternative: \texttt{fastparquet} (legacy)
+    \item Arrow provides better performance
+\end{itemize}
+
 \begin{lstlisting}
-import pyarrow as pa
-import pyarrow.feather as feather
+import dask.dataframe as dd
 
-t = pa.table({"x": [1, 2, 3], "y": ["a", "b", "c"]})
-
-feather.write_feather(t, "example.feather")
-t2 = feather.read_table("example.feather")
+# Read Parquet with Arrow engine (default)
+df = dd.read_parquet('data/*.parquet', engine='pyarrow')
 \end{lstlisting}

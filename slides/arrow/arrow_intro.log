@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  16 DEC 2025 20:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  28 JAN 2026 08:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**slides/arrow_intro.tex
-(./slides/arrow_intro.tex
+**arrow_intro.tex
+(./arrow_intro.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamer.cls
@@ -765,41 +765,112 @@ File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
 
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box79
+)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen299
+\pgf@nodesepend=\dimen300
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+))
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen301
+\pgffor@skip=\dimen302
+\pgffor@stack=\toks47
+\pgffor@toks=\toks48
+))
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count353
+\pgfplotmarksize=\dimen303
+)
+\tikz@lastx=\dimen304
+\tikz@lasty=\dimen305
+\tikz@lastxsaved=\dimen306
+\tikz@lastysaved=\dimen307
+\tikz@lastmovetox=\dimen308
+\tikz@lastmovetoy=\dimen309
+\tikzleveldistance=\dimen310
+\tikzsiblingdistance=\dimen311
+\tikz@figbox=\box80
+\tikz@figbox@bg=\box81
+\tikz@tempbox=\box82
+\tikz@tempbox@bg=\box83
+\tikztreelevel=\count354
+\tikznumberofchildren=\count355
+\tikznumberofcurrentchild=\count356
+\tikz@fig@count=\count357
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count358
+\pgfmatrixcurrentcolumn=\count359
+\pgf@matrix@numberofcolumns=\count360
+)
+\tikz@expandcount=\count361
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
 (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 4
-1.
+2.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count353
-\l__pdf_internal_box=\box79
+\l__color_backend_stack_int=\count362
+\l__pdf_internal_box=\box84
 )
-(slides/arrow_intro.aux)
+(./arrow_intro.aux)
 \openout1 = `arrow_intro.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -837,17 +908,17 @@ LaTeX Font Info:    ... okay on input line 41.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count354
-\scratchdimen=\dimen299
-\scratchbox=\box80
-\nofMPsegments=\count355
-\nofMParguments=\count356
-\everyMPshowfont=\toks47
-\MPscratchCnt=\count357
-\MPscratchDim=\dimen300
-\MPnumerator=\count358
-\makeMPintoPDFobject=\count359
-\everyMPtoPDFconversion=\toks48
+\scratchcounter=\count363
+\scratchdimen=\dimen312
+\scratchbox=\box85
+\nofMPsegments=\count364
+\nofMParguments=\count365
+\everyMPshowfont=\toks49
+\MPscratchCnt=\count366
+\MPscratchDim=\dimen313
+\MPnumerator=\count367
+\makeMPintoPDFobject=\count368
+\everyMPtoPDFconversion=\toks50
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -857,58 +928,58 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 41.
+Package hyperref Info: Link coloring OFF on input line 42.
 
-(slides/arrow_intro.out) (slides/arrow_intro.out)
+(./arrow_intro.out) (./arrow_intro.out)
 \@outlinefile=\write5
 \openout5 = `arrow_intro.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 41.
+(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 42.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 41.
+(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 42.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 41.
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 42.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/lmss/b/n on input line 41.
+(Font)                  OT1/cmss/b/n --> OT1/lmss/b/n on input line 42.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmr/m/n on input line 41.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 41.
+(Font)                  OT1/lmss/m/n --> T1/lmr/m/n on input line 42.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 41.
+(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 41.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 41.
+(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 42.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 41.
+(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 41.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 41.
+(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 42.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 41.
+(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 41.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 41.
+(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 42.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 41.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 41.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 42.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 41.
+(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 42.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 41.
+(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/lmss/b/n --> T1/lmr/b/n on input line 41.
+(Font)                  OT1/lmss/b/n --> T1/lmr/b/n on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/lmss/b/n --> T1/lmss/b/n on input line 41.
+(Font)                  T1/lmss/b/n --> T1/lmss/b/n on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 41.
+(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 41.
+(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 42.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 41.
+(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 42.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/translator/translator-basic-dicti
 onary-English.dict
@@ -934,10 +1005,10 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-\c@lstlisting=\count360
- (slides/arrow_intro.nav)
+\c@lstlisting=\count369
+ (./arrow_intro.nav)
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
-6.
+7.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -948,53 +1019,53 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-56.
+57.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
-6.
+7.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-56.
+57.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-56.
+57.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 56.
+(Font)              <10.95> on input line 57.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 56.
+(Font)              <8> on input line 57.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 56.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
+(Font)              <6> on input line 57.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 56.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 57.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 56.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 57.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 56.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 57.
 
 
 [2
@@ -1006,7 +1077,7 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
 ]
 \openout4 = `arrow_intro.vrb'.
 
- (slides/arrow_intro.vrb
+ (./arrow_intro.vrb
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 6.
 )
@@ -1015,7 +1086,7 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 
 ]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 86.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 87.
 
 
 [5
@@ -1023,28 +1094,28 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 ]
 \openout4 = `arrow_intro.vrb'.
 
- (slides/arrow_intro.vrb)
+ (./arrow_intro.vrb)
 
 [6
 
 ]
 \openout4 = `arrow_intro.vrb'.
 
- (slides/arrow_intro.vrb)
+ (./arrow_intro.vrb)
 
 [7
 
 ]
 \openout4 = `arrow_intro.vrb'.
 
- (slides/arrow_intro.vrb)
+ (./arrow_intro.vrb)
 
 [8
 
 ]
 \openout4 = `arrow_intro.vrb'.
 
- (slides/arrow_intro.vrb)
+ (./arrow_intro.vrb)
 
 [9
 
@@ -1056,28 +1127,28 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 \openout4 = `arrow_intro.vrb'.
 
 
-(slides/arrow_intro.vrb)
+(./arrow_intro.vrb)
 
 [11
 
 ]
 \openout4 = `arrow_intro.vrb'.
 
- (slides/arrow_intro.vrb)
+ (./arrow_intro.vrb)
 
 [12
 
 ]
 \openout4 = `arrow_intro.vrb'.
 
- (slides/arrow_intro.vrb)
+ (./arrow_intro.vrb)
 
 [13
 
 ]
 \openout4 = `arrow_intro.vrb'.
 
- (slides/arrow_intro.vrb)
+ (./arrow_intro.vrb)
 
 [14
 
@@ -1094,8 +1165,59 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 [17
 
 ]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 270.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 270.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 270.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 270.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 270.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 270.
+
 
 [18
+
+]
+
+[19
+
+]
+\openout4 = `arrow_intro.vrb'.
+
+ (./arrow_intro.vrb)
+Overfull \vbox (3.94308pt too high) detected at line 328
+ []
+
+
+
+[20
+
+]
+\openout4 = `arrow_intro.vrb'.
+
+ (./arrow_intro.vrb)
+
+[21
+
+]
+
+[22
+
+]
+
+[23
+
+]
+
+[24
+
+]
+
+[25
 
 ]
 \tf@nav=\write6
@@ -1107,7 +1229,7 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 \tf@snm=\write8
 \openout8 = `arrow_intro.snm'.
 
- (slides/arrow_intro.aux)
+ (./arrow_intro.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1116,13 +1238,13 @@ Package rerunfilecheck Info: File `arrow_intro.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 23681 strings out of 473190
- 441843 string characters out of 5715801
- 1085952 words of memory out of 5000000
- 46399 multiletter control sequences out of 15000+600000
- 598133 words of font info for 68 fonts, out of 8000000 for 9000
+ 26865 strings out of 473190
+ 515785 string characters out of 5715801
+ 1152739 words of memory out of 5000000
+ 49519 multiletter control sequences out of 15000+600000
+ 629008 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,11n,123p,393b,1357s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,11n,123p,386b,1357s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcir
 cle1.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss10.pfb><
 /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local
@@ -1133,10 +1255,10 @@ ts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/p
 ublic/lm/lmtk10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/l
 mtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbo
 ls/msam10.pfb>
-Output written on slides/arrow_intro.pdf (18 pages, 199491 bytes).
+Output written on arrow_intro.pdf (25 pages, 215688 bytes).
 PDF statistics:
- 173 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
+ 212 PDF objects out of 1000 (max. 8388607)
+ 157 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 500000)
  43 words of extra memory for PDF output out of 10000 (max. 10000000)
 

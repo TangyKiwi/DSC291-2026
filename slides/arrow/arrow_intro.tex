@@ -9,6 +9,7 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{listings}
+\usepackage{tikz}
 
 % --- Listings style (uncluttered, code-forward) ---
 \definecolor{CodeBg}{RGB}{248,248,248}
@@ -245,6 +246,175 @@ t2 = feather.read_table("example.feather")
   \item Standardizing schemas + types across pipelines
 \end{itemize}
 \end{frame}
+
+
+% --- Arrow-Dask Integration ---
+\begin{frame}{Arrow and Dask Integration}
+\small
+\textbf{Apache Arrow:}
+\begin{itemize}
+    \item Columnar in-memory format for analytics
+    \item Designed for zero-copy data sharing
+    \item Cross-language interoperability
+    \item Efficient serialization format
+\end{itemize}
+
+\vspace{0.1cm}
+\textbf{Why Arrow Matters for Dask:}
+\begin{itemize}
+    \item Efficient data transfer between workers
+    \item Reduced memory usage (especially strings)
+    \item Fast Parquet I/O operations
+    \item Better performance for large datasets
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Zero-Copy Data Transfer}
+\small
+\textbf{Traditional Approach (with copies):}
+\begin{itemize}
+    \item Worker 1: Serialize data $\rightarrow$ bytes
+    \item Network: Transfer bytes
+    \item Worker 2: Deserialize bytes $\rightarrow$ data
+    \item \textbf{Problem:} Multiple copies, slow
+\end{itemize}
+
+\vspace{0.1cm}
+\textbf{Arrow Approach (zero-copy):}
+\begin{itemize}
+    \item Data in Arrow format (columnar)
+    \item Transfer memory buffers directly
+    \item No serialization/deserialization overhead
+    \item \textbf{Benefit:} Faster, less memory
+\end{itemize}
+
+\vspace{0.05cm}
+\begin{center}
+\begin{tikzpicture}[scale=0.5, every node/.style={font=\scriptsize}]
+    % Worker 1
+    \node[draw, rectangle, fill=blue!20, text width=2cm, align=center] (w1) at (-3,0) {Worker 1\\Arrow data};
+    % Arrow
+    \draw[->, very thick] (w1) -- node[above, font=\tiny] {Zero-copy} (3,0);
+    % Worker 2
+    \node[draw, rectangle, fill=green!20, text width=2cm, align=center] (w2) at (3,0) {Worker 2\\Arrow data};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Arrow-Backed Dtypes}
+\small
+\textbf{Memory Efficiency:}
+\begin{itemize}
+    \item Arrow-backed strings: Up to 70\% less memory
+    \item Especially important for Dask clusters
+    \item Reduces memory pressure significantly
+\end{itemize}
+
+\begin{lstlisting}
+import pandas as pd
+import dask.dataframe as dd
+
+# Create DataFrame with Arrow-backed strings
+df = pd.DataFrame({
+    'name': pd.array(['Alice', 'Bob'], dtype='string[pyarrow]'),
+    'value': [1, 2]
+})
+
+# Dask automatically uses Arrow format
+ddf = dd.from_pandas(df, npartitions=2)
+\end{lstlisting}
+
+\textbf{Benefits:} Lower memory usage, faster operations, better performance
+\end{frame}
+
+\begin{frame}[fragile]{Parquet I/O with Arrow Engine}
+\small
+\textbf{Dask uses Arrow for Parquet:}
+\begin{itemize}
+    \item Default engine: \texttt{pyarrow} (Arrow-based)
+    \item Alternative: \texttt{fastparquet} (legacy)
+    \item Arrow provides better performance
+\end{itemize}
+
+\begin{lstlisting}
+import dask.dataframe as dd
+
+# Read Parquet with Arrow engine (default)
+df = dd.read_parquet('data/*.parquet', engine='pyarrow')
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Parquet I/O with Arrow Engine - Features}
+\small
+\textbf{Arrow Enables:}
+\begin{itemize}
+    \item Column projection (read only needed columns)
+    \item Predicate pushdown (filter at read time)
+    \item Parallel I/O across partitions
+    \item Efficient compression/decompression
+\end{itemize}
+
+\vspace{0.1cm}
+\textbf{Key Features:}
+\begin{itemize}
+    \item Fast columnar reads
+    \item Efficient filtering
+    \item Parallel processing
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Arrow for Inter-Worker Communication}
+\small
+\textbf{Distributed Dask with Arrow:}
+\begin{itemize}
+    \item Workers communicate using Arrow format
+    \item Data stays in Arrow format during transfer
+    \item No conversion overhead
+    \item Efficient for columnar data
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.5, every node/.style={font=\scriptsize}]
+    % Scheduler
+    \node[draw, rectangle, fill=orange!20, text width=2cm, align=center] (sched) at (0,2) {Scheduler};
+    
+    % Worker 1
+    \node[draw, rectangle, fill=blue!20, text width=2cm, align=center] (w1) at (-3,0) {Worker 1\\Arrow};
+    
+    % Worker 2
+    \node[draw, rectangle, fill=green!20, text width=2cm, align=center] (w2) at (3,0) {Worker 2\\Arrow};
+    
+    % Connections
+    \draw[<->, thick, dashed] (sched) -- (w1);
+    \draw[<->, thick, dashed] (sched) -- (w2);
+    \draw[<->, thick] (w1) -- node[above, font=\tiny] {Arrow} (w2);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Benefits:} Faster transfer, lower memory, better scalability
+\end{frame}
+
+\begin{frame}{Arrow-Dask Integration: Summary}
+\small
+\textbf{Key Advantages:}
+\begin{itemize}
+    \item \textbf{Zero-copy transfers:} Efficient worker communication
+    \item \textbf{Memory efficiency:} Arrow-backed strings use less memory
+    \item \textbf{Fast I/O:} Optimized Parquet reading/writing
+    \item \textbf{Columnar format:} Aligns with Dask's partition model
+\end{itemize}
+
+\textbf{When Arrow Shines:}
+\begin{itemize}
+    \item Large string columns (70\% memory savings)
+    \item Distributed computations (zero-copy transfers)
+    \item Parquet I/O operations (fast columnar reads)
+    \item Cross-language workflows (standard format)
+\end{itemize}
+
+\textbf{Best Practice:} Use Arrow-backed dtypes, prefer \texttt{pyarrow} engine, leverage Arrow in distributed setups
+\end{frame}
+
 
 % --- Resources ---
 \begin{frame}{Resources}
